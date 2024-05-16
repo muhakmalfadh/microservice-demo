@@ -101,7 +101,13 @@ class Worker {
   }
 
   static Jedis connectToRedis(String host) {
-    Jedis conn = new Jedis(host);
+    
+    //For production
+    String redisServiceHost = "redis-service.microservice-demo.svc.cluster.local";
+    Jedis conn = new Jedis(redisServiceHost);
+    
+    //For development
+    //Jedis conn = new Jedis(host);
 
     while (true) {
       try {

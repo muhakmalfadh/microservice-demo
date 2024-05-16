@@ -16,6 +16,7 @@ spec:
       containers:
       - name: vote-worker
         image: muhakmalfadh/microservice-demo-vote-worker:latest
+        imagePullPolicy: Always
         env:
         - name: FROM_REDIS_HOST
           value: "1"
