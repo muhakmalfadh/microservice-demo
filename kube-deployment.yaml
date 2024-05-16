@@ -1,0 +1,108 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-vote-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-vote-app
+  template:
+    metadata:
+      labels:
+        app: web-vote-app
+    spec:
+      containers:
+      - name: web-vote-app
+        image: your-registry/web-vote-app:latest
+        env:
+        - name: WEB_VOTE_NUMBER
+          value: "01"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vote-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vote-worker
+  template:
+    metadata:
+      labels:
+        app: vote-worker
+    spec:
+      containers:
+      - name: vote-worker
+        image: your-registry/vote-worker:latest
+        env:
+        - name: FROM_REDIS_HOST
+          value: "1"
+        - name: TO_REDIS_HOST
+          value: "1"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: results-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: results-app
+  template:
+    metadata:
+      labels:
+        app: results-app
+    spec:
+      containers:
+      - name: results-app
+        image: your-registry/results-app:latest
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis01
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis01
+  serviceName: redis01
+  template:
+    metadata:
+      labels:
+        app: redis01
+    spec:
+      containers:
+      - name: redis01
+        image: redis:3
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: store
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: store
+  serviceName: store
+  template:
+    metadata:
+      labels:
+        app: store
+    spec:
+      containers:
+      - name: store
+        image: postgres:9.5
+        env:
+        - name: POSTGRES_USER
+          value: "postgres"
+        - name: POSTGRES_PASSWORD
+          value: "pg8675309"
