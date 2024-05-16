@@ -24,7 +24,11 @@ io.sockets.on('connection', function (socket) {
 async.retry(
   {times: 1000, interval: 1000},
   function(callback) {
-    pg.connect('postgres://postgres:pg8675309@store/postgres', function(err, client, done) {
+    //for development
+    //pg.connect('postgres://postgres:pg8675309@store/postgres', function(err, client, done) {
+    
+    //for production
+    pg.connect('postgres://postgres:pg8675309@10.244.2.11/postgres', function(err, client, done) {
       if (err) {
         console.error("Failed to connect to db");
       }
