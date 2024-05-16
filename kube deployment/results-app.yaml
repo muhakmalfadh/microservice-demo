@@ -20,7 +20,9 @@ spec:
         - containerPort: 80
         env:
         - name: REDIS_HOST
-          value: "<redis-service-name>.<namespace>.svc.cluster.local"
+          value: "redis01.microservice-demo.svc.cluster.local"
+        - name: DATABASE_HOST
+          value: "store-service.microservice-demo.svc.cluster.local"
 ---
 apiVersion: v1
 kind: Service

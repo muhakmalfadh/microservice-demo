@@ -22,4 +22,6 @@ spec:
         - name: TO_REDIS_HOST
           value: "1"
         - name: REDIS_HOST
-          value: "<redis-service-name>.<namespace>.svc.cluster.local"
+          value: "redis01.microservice-demo.svc.cluster.local"
+        - name: DATABASE_HOST
+          value: "store-service.microservice-demo.svc.cluster.local"
