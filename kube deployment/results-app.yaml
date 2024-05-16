@@ -18,6 +18,9 @@ spec:
         image: muhakmalfadh/microservice-demo-reults-app:latest
         ports:
         - containerPort: 80
+        env:
+        - name: REDIS_HOST
+          value: "<redis-service-name>.<namespace>.svc.cluster.local"
 ---
 apiVersion: v1
 kind: Service

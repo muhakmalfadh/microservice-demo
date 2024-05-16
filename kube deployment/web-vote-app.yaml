@@ -21,6 +21,8 @@ spec:
         env:
         - name: WEB_VOTE_NUMBER
           value: "01"
+        - name: REDIS_HOST
+          value: "<redis-service-name>.<namespace>.svc.cluster.local"
 ---
 apiVersion: v1
 kind: Service

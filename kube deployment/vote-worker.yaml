@@ -21,3 +21,5 @@ spec:
           value: "1"
         - name: TO_REDIS_HOST
           value: "1"
+        - name: REDIS_HOST
+          value: "<redis-service-name>.<namespace>.svc.cluster.local"
