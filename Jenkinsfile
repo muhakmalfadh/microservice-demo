@@ -8,7 +8,7 @@ pipeline {
                     steps {
                         script {
                           withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                              sh "docker build -t muhakmalfadh/microservice-demo-vote-worker:latest vote-worker"
+                              sh "sudo docker build -t muhakmalfadh/microservice-demo-vote-worker:latest vote-worker"
                               sh "docker push muhakmalfadh/microservice-demo-vote-worker:latest"
                           }
                         }
@@ -18,7 +18,7 @@ pipeline {
                     steps {
                         script {
                           withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                              sh "docker build -t muhakmalfadh/microservice-demo-results-app:latest results-app"
+                              sh "sudo docker build -t muhakmalfadh/microservice-demo-results-app:latest results-app"
                               sh "docker push muhakmalfadh/microservice-demo-results-app:latest"
                           }
                         }
@@ -28,7 +28,7 @@ pipeline {
                     steps {
                         script {
                           withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                              sh "docker build -t muhakmalfadh/microservice-demo-web-vote-app:latest web-vote-app"
+                              sh "sudo docker build -t muhakmalfadh/microservice-demo-web-vote-app:latest web-vote-app"
                               sh "docker push muhakmalfadh/microservice-demo-web-vote-app:latest"
                           }
                         }
