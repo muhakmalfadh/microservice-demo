@@ -7,7 +7,7 @@ pipeline {
         stage('Build & Push vote-worker') {
           steps {
             script {
-              withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+              withDockerRegistry(credentialsId: 'docker-cred') {
                 sh "docker build -t muhakmalfadh/microservice-demo-vote-worker:latest vote-worker"
                 sh "docker push muhakmalfadh/microservice-demo-vote-worker:latest"
               }
@@ -18,7 +18,7 @@ pipeline {
         stage('Build & Push results-app') {
           steps {
             script {
-              withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+              withDockerRegistry(credentialsId: 'docker-cred') {
                 sh "docker build -t muhakmalfadh/microservice-demo-results-app:latest results-app"
                 sh "docker push muhakmalfadh/microservice-demo-results-app:latest"
               }
