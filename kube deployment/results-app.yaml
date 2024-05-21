@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: results-app
-        image: muhakmalfadh/microservice-demo-reults-app:latest
+        image: muhakmalfadh/microservice-demo-results-app:latest
         ports:
         - containerPort: 80
         env:
