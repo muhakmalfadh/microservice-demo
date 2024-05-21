@@ -1,15 +1,9 @@
 pipeline {
-    agent {
-        kubernetes {
-          label 'docker-runner'
-        }
-    }
+    agent any
     stages {
         stage('Build Docker Image') {
             steps {
-                container('docker') {
-                    sh "docker ps"
-                }
+              sh "kubectl cluster-info"
             }
         }
     }
