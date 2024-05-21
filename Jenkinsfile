@@ -9,7 +9,7 @@ pipeline {
                         script {
                           withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
                               sh "sudo docker build -t muhakmalfadh/microservice-demo-vote-worker:latest vote-worker"
-                              sh "docker push muhakmalfadh/microservice-demo-vote-worker:latest"
+                              sh "sudo docker push muhakmalfadh/microservice-demo-vote-worker:latest"
                           }
                         }
                     }
@@ -19,7 +19,7 @@ pipeline {
                         script {
                           withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
                               sh "sudo docker build -t muhakmalfadh/microservice-demo-results-app:latest results-app"
-                              sh "docker push muhakmalfadh/microservice-demo-results-app:latest"
+                              sh "sudo docker push muhakmalfadh/microservice-demo-results-app:latest"
                           }
                         }
                     }
@@ -29,7 +29,7 @@ pipeline {
                         script {
                           withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
                               sh "sudo docker build -t muhakmalfadh/microservice-demo-web-vote-app:latest web-vote-app"
-                              sh "docker push muhakmalfadh/microservice-demo-web-vote-app:latest"
+                              sh "sudo docker push muhakmalfadh/microservice-demo-web-vote-app:latest"
                           }
                         }
                     }
