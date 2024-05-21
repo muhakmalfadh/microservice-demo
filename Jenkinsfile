@@ -5,8 +5,12 @@ pipeline {
     
 
     stage('Build, Tag, and Push Docker Images') {
-      withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: '', namespace: 'devops-tools', restrictKubeConfigAccess: false, serverUrl: 'https://172.31.2.82:6443') {
-        sh 'kubectl get pods -n devops-tools'
+      steps {
+        script {
+          withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: '', namespace: 'devops-tools', restrictKubeConfigAccess: false, serverUrl: 'https://172.31.2.82:6443') {
+            sh 'kubectl get pods -n devops-tools'
+          }
+        }
       }
 
       parallel {
