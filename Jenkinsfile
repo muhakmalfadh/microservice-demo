@@ -5,15 +5,17 @@ pipeline {
     
 
     stage('Build, Tag, and Push Docker Images') {
-      steps {
-        script {
-          withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: '', namespace: 'devops-tools', restrictKubeConfigAccess: false, serverUrl: 'https://172.31.2.82:6443') {
-            sh 'kubectl get pods -n devops-tools'
+      parallel {
+        stage('Test Akses Kubernetes') {
+          steps {
+            script {
+              withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: '', namespace: 'devops-tools', restrictKubeConfigAccess: false, serverUrl: 'https://172.31.2.82:6443') {
+                sh 'kubectl get pods -n devops-tools'
+              }
+            }
           }
         }
-      }
 
-      parallel {
         stage('Build & Push vote-worker') {
           steps {
             script {
