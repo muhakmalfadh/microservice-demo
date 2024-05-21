@@ -1,16 +1,12 @@
 pipeline {
-    agent any
-
-    environment {
-        DOCKER_RUNNER_POD = 'docker-runner'
+    agent {
+      label 'docker-runner'
     }
 
     stages {
-        stage('Build Docker Image') {
+        stage('List Docker Container') {
             steps {
-                script {
-                    sh "kubectl exec ${DOCKER_RUNNER_POD} -- docker ps"
-                }
+                sh 'docker ps'
             }
         }
         // stage('Push Docker Image') {
