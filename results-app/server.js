@@ -28,7 +28,7 @@ async.retry(
     //pg.connect('postgres://postgres:pg8675309@store/postgres', function(err, client, done) {
     
     //for production
-    pg.connect('postgres://postgres:pg8675309@10.244.2.29/postgres', function(err, client, done) {
+    pg.connect('postgres://postgres:pg8675309@10.244.2.36/postgres', function(err, client, done) {
       if (err) {
         console.error("Failed to connect to db");
       }

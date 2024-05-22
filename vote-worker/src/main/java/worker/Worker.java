@@ -103,7 +103,7 @@ class Worker {
   static Jedis connectToRedis(String host) {
     
     //For production
-    String redisServiceHost = "10.244.2.31";
+    String redisServiceHost = "10.244.2.40";
     Jedis conn = new Jedis(redisServiceHost);
     
     //For development
@@ -131,7 +131,7 @@ class Worker {
 
       Class.forName("org.postgresql.Driver");
       //For production
-      String url = "jdbc:postgresql://10.244.2.29/postgres";
+      String url = "jdbc:postgresql://10.244.2.36/postgres";
       
       //For development
       //String url = "jdbc:postgresql://" + host + "/postgres";

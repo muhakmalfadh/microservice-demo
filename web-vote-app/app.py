@@ -17,7 +17,7 @@ hostname = socket.gethostname()
 #db_server = "redis%s" % os.environ['WEB_VOTE_NUMBER']
 
 #for production
-db_server = "10.244.2.31"
+db_server = "10.244.2.40"
 
 redis = connect_to_redis(db_server)
 app = Flask(__name__)
